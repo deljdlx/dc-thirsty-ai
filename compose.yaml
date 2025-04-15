@@ -1,5 +1,5 @@
 services:
-  patterns:
+  thirsty-ai:
     image: nginx:alpine
     container_name: thirsty-ai
     restart: always
