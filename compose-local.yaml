@@ -1,7 +1,7 @@
 services:
   patterns:
     build: ./compose
-    container_name: patterns
+    container_name: thirsty-ai
     restart: always
     ports:
       - "8080:80"

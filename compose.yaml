@@ -1,7 +1,7 @@
 services:
   patterns:
     image: nginx:alpine
-    container_name: patterns
+    container_name: thirsty-ai
     restart: always
     env_file:
       - .env
