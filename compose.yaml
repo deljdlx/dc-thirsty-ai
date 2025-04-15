@@ -10,9 +10,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
-      - "traefik.http.routers.patterns.rule=Host(\"${DOMAIN}\")"
-      - "traefik.http.routers.patterns.entrypoints=websecure"
-      - "traefik.http.routers.patterns.tls.certresolver=myresolver"
+      - "traefik.http.routers.thirsty-ai.rule=Host(\"${DOMAIN}\")"
+      - "traefik.http.routers.thirsty-ai.entrypoints=websecure"
+      - "traefik.http.routers.thirsty-ai.tls.certresolver=myresolver"
     networks:
       - web
 
