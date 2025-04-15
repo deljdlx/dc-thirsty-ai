@@ -10,7 +10,7 @@ jobs:
   deploy:
     uses: deljdlx/github-tools/.github/workflows/deploy.yml@main
     with:
-      host_name: "thirstyai.jlb.ninja"
+      host_name: "thirsty-ai.jlb.ninja"
       repo_name: "dc-thirsty-ai"
       repo_owner: "deljdlx"
       deploy_folder: "/home/jdlxt/stack"
