@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thirsty! AI - Estimateur de Consommation d'Eau pour l'IA</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Menu hamburger pour mobile -->
+    <div class="menu-toggle" id="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <!-- Overlay pour fermer le menu quand on clique à l'extérieur -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    <!-- Sidebar (like ChatGPT) -->
+    <div class="sidebar" id="sidebar">
+        <button class="new-prompt-btn" id="about-modal-btn">
+            <i class="fas fa-info-circle"></i> À propos
+        </button>
+        
+        <!-- Remplacé l'historique par du texte explicatif -->
+        <div class="info-section">
+            <h3 class="info-title">À propos de Thirsty! AI</h3>
+            <div class="info-text">
+                <p>Thirsty! AI estime la consommation d'eau des modèles de langage IA lors du traitement de vos requêtes.</p>
+                <p>Différents types de requêtes nécessitent différentes ressources de calcul, ce qui se traduit par une consommation d'eau variable.</p>
+                <p>Cet outil aide à sensibiliser à l'impact environnemental de l'IA.</p>
+            </div>
+            
+            <h3 class="info-title">Comment ça marche</h3>
+            <div class="info-text">
+                <p>Saisissez n'importe quelle requête dans le chat pour voir une estimation de sa consommation d'eau.</p>
+                <p>L'estimation est basée sur divers facteurs comme :</p>
+                <ul class="info-list">
+                    <li><i class="fas fa-text-width"></i> Longueur du texte</li>
+                    <li><i class="fas fa-book"></i> Complexité</li>
+                    <li><i class="fas fa-image"></i> Références d'images</li>
+                    <li><i class="fas fa-laptop-code"></i> Contenu technique</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="profile-section">
+            <div class="profile-icon">U</div>
+            <div class="profile-name">Utilisateur</div>
+        </div>
+    </div>
+    
+    <!-- Main content area -->
+    <div class="main-content">
+        <!-- Header has been removed -->
+        
+        <div class="container">
+            <div class="messages-container" id="messages-container">
+                <!-- Welcome message -->
+                <div class="message assistant">
+                    <div class="message-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Bonjour ! Je suis Thirsty! AI. Je peux estimer approximativement la consommation d'eau de vos requêtes IA. Cette estimation est basée sur des calculs théoriques et peut varier en fonction de plusieurs facteurs. Essayez une requête comme : "Explique comment fonctionne l'intelligence artificielle en 5 points".</p>
+                    </div>
+                </div>
+                
+                <!-- Messages will be added here dynamically -->
+            </div>
+            
+            <div class="prompt-input-container">
+                <div class="prompt-input-wrapper">
+                    <textarea id="user-prompt" placeholder="Écrivez une requête pour estimer son impact sur l'eau..." rows="1"></textarea>
+                    <button id="estimate-btn">
+                        <i class="fas fa-arrow-up"></i>
+                    </button>
+                </div>
+                <p class="disclaimer">Les estimations de Thirsty! AI sont à des fins éducatives. La consommation réelle d'eau peut varier.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour l'explication du principe de l'application -->
+    <div id="explanation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-tint"></i> À propos de Thirsty! AI</h2>
+            
+            <div class="modal-section">
+                <h3>Principe de l'application</h3>
+                <p>Thirsty! AI est un outil éducatif qui estime la consommation d'eau des modèles d'IA lorsqu'ils traitent des requêtes (prompts).</p>
+                <p>Les grands modèles de langage comme GPT-4, Claude ou LLaMA consomment d'importantes ressources de calcul, ce qui se traduit par une consommation d'eau significative pour le refroidissement des centres de données.</p>
+                <p>Cette application sensibilise à l'impact environnemental de l'IA en visualisant cette consommation d'eau.</p>
+            </div>
+            
+            <div class="modal-section">
+                <h3>Comment fonctionne l'algorithme</h3>
+                <p>L'estimateur analyse votre prompt selon plusieurs critères et règles :</p>
+                <ul class="modal-list">
+                    <li><i class="fas fa-text-width"></i> <strong>Taille du prompt</strong> : Plus un prompt est long, plus il consomme de ressources</li>
+                    <li><i class="fas fa-book"></i> <strong>Mots complexes</strong> : Les mots longs ou rares nécessitent plus de traitement</li>
+                    <li><i class="fas fa-image"></i> <strong>Génération d'images</strong> : Les requêtes demandant des images sont très coûteuses</li>
+                    <li><i class="fas fa-laptop-code"></i> <strong>Contenu technique</strong> : Le code ou contenu spécialisé demande plus d'effort</li>
+                    <li><i class="fas fa-code"></i> <strong>Code structuré</strong> : L'analyse et la génération de code consomment davantage</li>
+                    <li><i class="fas fa-brain"></i> <strong>Intention analytique</strong> : Les demandes d'analyse complexe sont plus intensives</li>
+                    <li><i class="fas fa-language"></i> <strong>Langues étrangères</strong> : Le traitement multilingue nécessite plus de ressources</li>
+                </ul>
+                <p>Chaque règle attribue un certain volume d'eau (en millilitres) selon sa complexité, puis les résultats sont additionnés.</p>
+            </div>
+            
+            <div class="modal-section">
+                <h3>Les chiffres sont-ils précis ?</h3>
+                <p>Les estimations sont basées sur des recherches concernant la consommation d'eau des centres de données, mais elles sont simplifiées à des fins pédagogiques.</p>
+                <p>L'objectif principal est de montrer les différences relatives entre types de requêtes et de sensibiliser à l'impact environnemental.</p>
+                <p>Pour minimiser votre impact, privilégiez des prompts courts, précis et bien formulés.</p>
+            </div>
+            
+            <div class="modal-section">
+                <h3>Ressources</h3>
+                <p>Cette application s'inspire de recherches scientifiques récentes sur l'impact environnemental de l'IA :</p>
+                <ul class="modal-list resources-list">
+                    <li>
+                        <i class="fas fa-file-alt"></i> 
+                        <a href="https://arxiv.org/abs/2304.03271" target="_blank" rel="noopener">
+                            <strong>Making AI Less "Thirsty": Uncovering and Addressing the Secret Water Footprint of AI Models</strong>
+                        </a>
+                        <p class="resource-description">Cette étude, publiée en avril 2023 par Sharma et al., révèle l'empreinte eau significative des modèles d'IA et propose des stratégies pour la réduire.</p>
+                    </li>
+                </ul>
+                <p>Ces recherches mettent en lumière l'importance de considérer la consommation d'eau comme un facteur clé dans l'évaluation de l'impact environnemental des technologies d'IA.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import scripts as modules -->
+    <script type="module" src="waterEstimator.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
