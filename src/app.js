@@ -2,7 +2,7 @@ import ThirstyAI from './assets/js/ThirstyAI.js';
 import Rule from './assets/js/Rule.js';
 
 /**
- * Thirsty! AI Application
+ * Thirsty !AI Application
  * User interface for estimating water consumption of AI prompts
  */
 class ThirstyAIApp {
@@ -194,7 +194,7 @@ class ThirstyAIApp {
     }
     
     /**
-     * Add assistant (Thirsty! AI) message to chat
+     * Add assistant (Thirsty !AI) message to chat
      * @param {Object} estimation - Water estimation result
      */
     addAssistantMessage(estimation) {
