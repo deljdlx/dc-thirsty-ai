@@ -13,16 +13,16 @@
     <div class="menu-toggle" id="menu-toggle">
         <i class="fas fa-bars"></i>
     </div>
-    
+
     <!-- Overlay pour fermer le menu quand on clique à l'extérieur -->
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
-    
+
     <!-- Sidebar (like ChatGPT) -->
     <div class="sidebar" id="sidebar">
         <button class="new-prompt-btn" id="about-modal-btn">
             <i class="fas fa-info-circle"></i> À propos
         </button>
-        
+
         <!-- Remplacé l'historique par du texte explicatif -->
         <div class="info-section">
             <h3 class="info-title">À propos de Thirsty !AI</h3>
@@ -31,7 +31,7 @@
                 <p>Différents types de requêtes nécessitent différentes ressources de calcul, ce qui se traduit par une consommation d'eau variable.</p>
                 <p>Cet outil aide à sensibiliser à l'impact environnemental de l'IA.</p>
             </div>
-            
+
             <h3 class="info-title">Comment ça marche</h3>
             <div class="info-text">
                 <p>Saisissez n'importe quelle requête dans le chat pour voir une estimation de sa consommation d'eau.</p>
@@ -44,17 +44,17 @@
                 </ul>
             </div>
         </div>
-        
+
         <!-- <div class="profile-section">
             <div class="profile-icon">U</div>
             <div class="profile-name">Utilisateur</div>
         </div> -->
     </div>
-    
+
     <!-- Main content area -->
     <div class="main-content">
         <!-- Header has been removed -->
-        
+
         <div class="container">
             <div class="messages-container" id="messages-container">
                 <!-- Welcome message -->
@@ -63,13 +63,13 @@
                         <i class="fas fa-tint"></i>
                     </div>
                     <div class="message-content">
-                        <p>Bonjour ! Je suis Thirsty !AI. Je peux estimer approximativement la consommation d'eau de vos requêtes IA. Cette estimation est basée sur des calculs théoriques et peut varier en fonction de plusieurs facteurs. Essayez une requête comme : "Explique comment fonctionne l'intelligence artificielle en 5 points".</p>
+                        <p>Bonjour ! Je suis Thirsty !AI (Thirsty NOT AI ^_^). Je peux estimer approximativement la consommation d'eau de vos requêtes IA. Cette estimation est basée sur des calculs théoriques et peut varier en fonction de plusieurs facteurs. Notez que l'analyse fonctionne uniquement en français et reste très incomplète à ce stade. Essayez une requête comme : "Explique comment fonctionne l'intelligence artificielle en 5 points".</p>
                     </div>
                 </div>
-                
+
                 <!-- Messages will be added here dynamically -->
             </div>
-            
+
             <div class="prompt-input-container">
                 <div class="prompt-input-wrapper">
                     <textarea id="user-prompt" placeholder="Écrivez une requête pour estimer son impact sur l'eau..." rows="1"></textarea>
@@ -117,7 +117,7 @@
                 <p>L'objectif principal est de montrer les différences relatives entre types de requêtes et de sensibiliser à l'impact environnemental.</p>
                 <p>Pour minimiser votre impact, privilégiez des prompts courts, précis et bien formulés.</p>
             </div>
-            
+
             <div class="modal-section">
                 <h3>Ressources</h3>
                 <p>Cette application s'inspire de recherches scientifiques récentes sur l'impact environnemental de l'IA :</p>
@@ -131,6 +131,32 @@
                     </li>
                 </ul>
                 <p>Ces recherches mettent en lumière l'importance de considérer la consommation d'eau comme un facteur clé dans l'évaluation de l'impact environnemental des technologies d'IA.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal d'avertissement au démarrage -->
+    <div id="disclaimer-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" data-modal="disclaimer-modal">&times;</span>
+            <h2><i class="fas fa-exclamation-triangle"></i> Avertissement Important</h2>
+            
+            <div class="modal-section">
+                <h3>Projet expérimental</h3>
+                <p><strong>Thirsty !AI (Thirsty NOT AI ^_^)</strong> est un proof of concept</strong> et non un outil fiable techniquement. Les estimations fournies sont approximatives et basées sur des hypothèses simplifiées.</p>
+                <p>Ce projet vise à démontrer un concept important : l'impact environnemental invisible des technologies d'IA que nous utilisons au quotidien.</p>
+                <p>L'algorithme d'analyse fonctionne uniquement en français et de façon très incomplète à ce stade.</p>
+            </div>
+            
+            <div class="modal-section">
+                <h3>Une fonctionnalité qui manque</h3>
+                <p>Il serait extrêmement utile que les interfaces d'IA comme ChatGPT, Claude, ou Gemini intègrent nativement ce type d'information sur la consommation de ressources.</p>
+                <p>Les utilisateurs pourraient ainsi prendre conscience de l'impact de leurs requêtes et adapter leurs pratiques pour un usage plus responsable de l'IA.</p>
+                <p>Cette transparence permettrait également de valoriser les efforts des entreprises qui optimisent leurs modèles pour réduire leur empreinte environnementale.</p>
+            </div>
+            
+            <div class="modal-section disclaimer-buttons">
+                <button id="disclaimer-continue" class="disclaimer-btn">J'ai compris, continuer</button>
             </div>
         </div>
     </div>

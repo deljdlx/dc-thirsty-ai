@@ -306,6 +306,28 @@ header h1 {
     text-align: center;
 }
 
+.disclaimer-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.disclaimer-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.disclaimer-btn:hover {
+    background-color: #0d8a6c;
+}
+
 #water-estimation-result {
     background-color: transparent;
     padding: 0;

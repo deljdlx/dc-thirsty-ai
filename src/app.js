@@ -16,7 +16,10 @@ class ThirstyAIApp {
         this.messagesContainer = document.getElementById('messages-container');
         this.aboutModalBtn = document.getElementById('about-modal-btn');
         this.explanationModal = document.getElementById('explanation-modal');
-        this.closeModal = document.querySelector('.close-modal');
+        this.disclaimerModal = document.getElementById('disclaimer-modal');
+        this.closeExplanationModalBtn = document.querySelector('#explanation-modal .close-modal');
+        this.closeDisclaimerModalBtn = document.querySelector('#disclaimer-modal .close-modal');
+        this.disclaimerContinueBtn = document.getElementById('disclaimer-continue');
         
         // Mobile responsive elements
         this.menuToggle = document.getElementById('menu-toggle');
@@ -31,6 +34,9 @@ class ThirstyAIApp {
         
         // Auto resize textarea
         this.setupTextareaAutoResize();
+        
+        // Show the disclaimer modal on startup
+        this.showDisclaimerOnStartup();
     }
     
     /**
@@ -50,20 +56,40 @@ class ThirstyAIApp {
         // Open explanation modal
         this.aboutModalBtn.addEventListener('click', () => this.openModal());
         
-        // Close modal with X button
-        this.closeModal.addEventListener('click', () => this.closeModalHandler());
+        // Close explanation modal with X button
+        if (this.closeExplanationModalBtn) {
+            this.closeExplanationModalBtn.addEventListener('click', () => this.closeModalHandler());
+        }
         
-        // Close modal when clicking outside
+        // Close disclaimer modal with X button
+        if (this.closeDisclaimerModalBtn) {
+            this.closeDisclaimerModalBtn.addEventListener('click', () => this.closeDisclaimerModalHandler());
+        }
+        
+        // Close disclaimer modal with continue button
+        if (this.disclaimerContinueBtn) {
+            this.disclaimerContinueBtn.addEventListener('click', () => this.closeDisclaimerModalHandler());
+        }
+        
+        // Close modals when clicking outside
         window.addEventListener('click', (event) => {
             if (event.target === this.explanationModal) {
                 this.closeModalHandler();
             }
+            if (event.target === this.disclaimerModal) {
+                this.closeDisclaimerModalHandler();
+            }
         });
         
-        // Close modal with Escape key
+        // Close modals with Escape key
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && this.explanationModal.classList.contains('show')) {
-                this.closeModalHandler();
+            if (event.key === 'Escape') {
+                if (this.explanationModal.classList.contains('show')) {
+                    this.closeModalHandler();
+                }
+                if (this.disclaimerModal && this.disclaimerModal.classList.contains('show')) {
+                    this.closeDisclaimerModalHandler();
+                }
             }
         });
         
@@ -79,6 +105,51 @@ class ThirstyAIApp {
         
         // Handle window resize for responsive layout
         window.addEventListener('resize', () => this.handleResize());
+    }
+    
+    /**
+     * Show disclaimer modal on startup
+     */
+    showDisclaimerOnStartup() {
+        // Pour les tests, forcer l'affichage du disclaimer à chaque chargement de page
+        // en décommentant la ligne ci-dessous et en commentant le reste de la fonction
+        this.openDisclaimerModal();
+        localStorage.removeItem('thirstyAI_hasSeenDisclaimer'); // Réinitialiser pour le prochain chargement
+
+        // Code original ci-dessous
+        /*
+        // Check if we've shown the disclaimer before
+        const hasSeenDisclaimer = localStorage.getItem('thirstyAI_hasSeenDisclaimer');
+        
+        // Always show disclaimer on first visit, then only once per day
+        if (!hasSeenDisclaimer || Date.now() - parseInt(hasSeenDisclaimer) > 24 * 60 * 60 * 1000) {
+            setTimeout(() => {
+                this.openDisclaimerModal();
+                // Set flag that user has seen disclaimer
+                localStorage.setItem('thirstyAI_hasSeenDisclaimer', Date.now().toString());
+            }, 500);
+        }
+        */
+    }
+    
+    /**
+     * Open the disclaimer modal
+     */
+    openDisclaimerModal() {
+        if (this.disclaimerModal) {
+            this.disclaimerModal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+    }
+    
+    /**
+     * Close the disclaimer modal
+     */
+    closeDisclaimerModalHandler() {
+        if (this.disclaimerModal) {
+            this.disclaimerModal.classList.remove('show');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
     }
     
     /**
